@@ -166,8 +166,9 @@ p {
   transition: background-color 0.3s ease;
 }
 
-.project-card a:hover {
-  background-color: #ff914d;
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(255, 170, 102, 0.5);
 }
 
 #contact h2 {
