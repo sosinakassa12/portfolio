@@ -28,28 +28,55 @@ const projects = [
   description: "A simple news app that fetches headlines using a news API. Clean UI with live updates on world news.",
   image: "img/news.jpg",
   github: "https://github.com/sosinakassa12/NEWS-APP"
+  },
+  {
+  title: "Meal Planning App",
+  description: "A full-stack web app built with PHP, MySQL, HTML, and CSS that helps users plan a week’s worth of meals (3 per day), browse or add recipes, and generate automated grocery shopping lists. Includes secure login, user accounts, and recipe storage.",
+  image: "img/meal.jpg",
+  github: "https://github.com/JCSchmit/meal-planning-app"
+  },
+  {
+  title: "Bullet Train Management System",
+  description: "Capstone project for Metro State University. A web-based system to manage high-speed rail logistics, including train schedules, ticket booking, and route management.",
+  video: "img/bullet.mp4",
+  github: "https://github.com/Dpellowski/CapstoneProject"
 }
-  
+
 ];
 
 function renderProjects() {
-  const container = document.querySelector('.project-grid');
-  container.innerHTML = "";
-
-  projects.forEach(proj => {
+  const grid = document.querySelector(".project-grid");
+  
+  projects.forEach(project => {
     const card = document.createElement("div");
     card.classList.add("project-card");
+    card.setAttribute("data-aos", "fade-up");
 
+    // Build media (video or image)
+    let mediaHTML = "";
+    if (project.video) {
+      mediaHTML = `
+        <video controls muted autoplay loop style="width: 100%; border-radius: 8px;">
+          <source src="${project.video}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+    } else if (project.image) {
+      mediaHTML = `<img src="${project.image}" alt="${project.title} Screenshot" />`;
+    }
+
+    // Set full card HTML
     card.innerHTML = `
-      <img src="${proj.image}" alt="${proj.title}">
-      <h3>${proj.title}</h3>
-      <p>${proj.description}</p>
-      <a href="${proj.github}" target="_blank">GitHub</a>
+      ${mediaHTML}
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <a href="${project.github}" target="_blank">View Code</a>
     `;
 
-    container.appendChild(card);
+    grid.appendChild(card);
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", renderProjects);
 
