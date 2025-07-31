@@ -2,31 +2,31 @@ const projects = [
   {
     title: "Upnow",
     description: "One-click app that helps you beat boredom and use your time meaningfully based on your mood.",
-    image: "upnow.png",
+    image: "img/upnow.jpg",
     github: "https://github.com/sosinakassa12/upnow"
   },
   {
     title: "Trivia Game",
     description: "A fun quiz game using JavaScript. Shows your score and lets you try again with new questions.",
-    image: "trivia.png",
+    image: "img/trivia.jpg",
     github: "https://github.com/sosinakassa12/trivia-game"
   },
   {
     title: "Pomodoro Timer",
     description: "A timer app based on the Pomodoro technique with customizable sessions and sound.",
-    image: "pomodoro.png",
+    image: "img/pomo.jpg",
     github: "https://github.com/Do0ky/MyPomo/tree/sosi-branch"
   },
   {
     title: "Virtual Capsule",
     description: "Leave messages for your future self or others. Store memories in a virtual capsule.",
-    image: "capsule.png",
+    image: "img/capsule.jpg",
     github: "https://github.com/sosinakassa12"
   },
   {
   title: "News App",
   description: "A simple news app that fetches headlines using a news API. Clean UI with live updates on world news.",
-  image: "newsapp.png",
+  image: "img/news.jpg",
   github: "https://github.com/sosinakassa12/NEWS-APP"
 }
   
@@ -77,3 +77,26 @@ function renderSkills() {
 }
 
 document.addEventListener("DOMContentLoaded", renderSkills);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("img-modal");
+  const modalImg = document.getElementById("modal-img");
+  const span = document.querySelector(".img-close");
+
+  document.querySelectorAll(".project-card img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    });
+  });
+
+  span.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+});
